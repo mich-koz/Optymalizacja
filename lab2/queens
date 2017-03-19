@@ -1,0 +1,44 @@
+def queens(n):
+  """Problem hetmanow na szachownicy o boku n"""
+  result = "Maximize \nobj: "
+  for i in range(1, n):
+    for j in range(1, n+1):
+      result += "x"+str(i)+"."+str(j)+" + "
+  for j in range(1, n):
+      result +=  "x"+str(n)+"."+str(j)+" + "
+  result += "x"+str(n)+"."+str(n)+"\nSubject to\n"
+ 
+  for i in range (1, n+1):
+    column = ""
+    row = ""
+    for j in range (1, n):
+      column += "x"+str(i)+"."+str(j)+" + "
+      row += "x"+str(j)+"."+str(i)+" + "
+    column +="x"+str(i)+"."+str(n)+" <= 1\n"
+    row +="x"+str(n)+"."+str(i)+" <= 1\n"
+    result += column+row
+ 
+  for i in range (2, 2*n+1):
+    for j in range (max(1, i-n), min(n, i-1)):
+      result += "x"+str(j)+"."+str(i-j)+" + "
+    result += "x"+str(min(n, i-1))+"." +str(i-min(n, i-1))+" <= 1\n"
+ 
+  for i in range (-n+1, n):
+    for j in range (max(i+1, 1), min(n, n+i)):
+      result += "x"+str(j)+"."+str(j-i)+" + "
+    result += "x"+str(min(n, n+i))+"."+str(min(n, n+i)-i)+" <= 1\n"  
+   
+  result += "Bounds\n"  
+  for i in range(1, n+1):
+    for j in range(1, n+1):
+      result += "0 <= x" + str(i) + "." + str(j) + " <= 1\n"
+     
+  result += "Generals\n"  
+  for i in range(1, n+1):
+    for j in range(1, n+1):
+      result += "x" + str(i) + "." + str(j)+"\n"
+     
+  return result+"End"
+  
+n = int(input("Podaj bok szachownicy n x n: "), 10)
+print(queens(n))
