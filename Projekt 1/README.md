@@ -1,4 +1,6 @@
 Projekt 1 - Pivot Rules
+
+
 Autorzy: Mateusz Doliński, Katarzyna Głowacka, Michał Kozyra
 
 Kod programu uruchamiany w Sage. 
