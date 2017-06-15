@@ -1,1 +1,0 @@
-Zadanie Domowe - Problem Hetmanów
